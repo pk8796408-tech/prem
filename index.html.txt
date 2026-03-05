@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annual Tech Symposium 2025 — Registration</title>
+    <meta name="description" content="Register for the Annual Tech Symposium 2025. A premier student technology event.">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+    <div class="app-container">
+
+        <!-- ── Header Banner ──────────────────────────── -->
+        <header class="app-header">
+            <div class="header-image-container">
+                <img src="header_image.svg" alt="Annual Tech Symposium" id="header-img">
+                <div class="header-overlay">
+                    <div class="event-badge">
+                        <span class="event-badge-dot"></span>
+                        Annual Symposium · 2025
+                    </div>
+                    <h1>Annual Tech<br>Symposium</h1>
+                    <div class="header-meta">
+                        <div class="meta-item">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <rect x="3" y="4" width="18" height="18" rx="2" />
+                                <line x1="16" y1="2" x2="16" y2="6" />
+                                <line x1="8" y1="2" x2="8" y2="6" />
+                                <line x1="3" y1="10" x2="21" y2="10" />
+                            </svg>
+                            Mar 8, 2025
+                        </div>
+                        <div class="meta-item">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                            9:00 AM – 5:00 PM
+                        </div>
+                        <div class="meta-item">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                            Hall A, Sci &amp; Eng
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Live ticker -->
+            <div class="ticker-wrap">
+                <div class="ticker-inner">
+                    <span>🎟 Registration Open</span>
+                    <span>·</span>
+                    <span>🏆 15+ Workshops</span>
+                    <span>·</span>
+                    <span>🚀 Keynote Speakers</span>
+                    <span>·</span>
+                    <span>💡 Hackathon</span>
+                    <span>·</span>
+                    <span>🎟 Registration Open</span>
+                    <span>·</span>
+                    <span>🏆 15+ Workshops</span>
+                    <span>·</span>
+                    <span>🚀 Keynote Speakers</span>
+                    <span>·</span>
+                    <span>💡 Hackathon</span>
+                    <span>·</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- ── Registration View ──────────────────────── -->
+        <main id="registration-view" class="view active">
+
+            <!-- Capacity -->
+            <div class="capacity-card">
+                <div class="capacity-header">
+                    <span class="label">Seats Available</span>
+                    <span class="capacity-pct">85% Filled</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width:85%"></div>
+                </div>
+                <div class="capacity-note">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    Only <strong style="color:#fbbf24">&nbsp;30 spots&nbsp;</strong>&nbsp;left — secure yours now
+                </div>
+            </div>
+
+            <!-- Verified College Badge -->
+            <div class="verified-badge" id="verified-badge">
+                <span class="vb-icon">🏛️</span>
+                <div class="vb-text">
+                    <span class="vb-label">Verified Institution</span>
+                    <span class="vb-name" id="vb-college-name">—</span>
+                </div>
+                <a href="/verify" class="vb-change">Change</a>
+            </div>
+
+            <!-- Form -->
+            <section class="form-section">
+                <div class="section-header">
+                    <div class="section-icon">👤</div>
+                    <h2>Student Information</h2>
+                </div>
+
+                <form id="registration-form">
+                    <div class="input-group">
+                        <label for="full-name">Full Name</label>
+                        <input type="text" id="full-name" placeholder="e.g. Priya Sharma" required autocomplete="name">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">Student Email</label>
+                        <input type="email" id="email" placeholder="you@college.edu" required autocomplete="email">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="year">Academic Year</label>
+                        <div class="select-wrapper">
+                            <select id="year">
+                                <option value="freshman">Year 1 — Freshman</option>
+                                <option value="sophomore">Year 2 — Sophomore</option>
+                                <option value="junior">Year 3 — Junior</option>
+                                <option value="senior">Year 4 — Senior</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <span class="chips-label">Dietary Preference</span>
+                    <div class="chip-container" id="dietary-chips">
+                        <button type="button" class="chip active" data-value="none">None</button>
+                        <button type="button" class="chip" data-value="vegetarian">🥦 Vegetarian</button>
+                        <button type="button" class="chip" data-value="vegan">🌱 Vegan</button>
+                        <button type="button" class="chip" data-value="gluten-free">🌾 Gluten Free</button>
+                        <button type="button" class="chip" data-value="nut-allergy">🥜 Nut Allergy</button>
+                    </div>
+
+                    <div class="guest-counter-card">
+                        <div class="guest-label">
+                            <span class="label-main">Additional Guests</span>
+                            <span class="label-sub">Max 3 guests per delegate</span>
+                        </div>
+                        <div class="counter-controls">
+                            <button type="button" id="guest-minus" class="counter-btn" disabled>−</button>
+                            <span id="guest-count">0</span>
+                            <button type="button" id="guest-plus" class="counter-btn">+</button>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="consent" required>
+                        <label for="consent">I agree to the university's code of conduct, event policies, and consent to
+                            my data being used for event management purposes.</label>
+                    </div>
+
+                    <button type="submit" class="cta-button" id="submit-btn">
+                        Register Now <span class="arrow">→</span>
+                    </button>
+                </form>
+            </section>
+        </main>
+
+        <!-- ── Payment View ────────────────────────── -->
+        <main id="payment-view" class="view hidden">
+            <div class="pay-header">
+                <div class="pay-back" id="pay-back-btn">← Back</div>
+                <div class="pay-step-label">Step 3 of 3 · Payment</div>
+            </div>
+
+            <!-- Fee Summary -->
+            <div class="fee-card">
+                <div class="fee-row">
+                    <span class="fee-label">Registration Fee</span>
+                    <span class="fee-amount">₹149</span>
+                </div>
+                <div class="fee-row">
+                    <span class="fee-label">Guest Fee <span id="pay-guest-note"></span></span>
+                    <span class="fee-amount" id="pay-guest-fee">₹0</span>
+                </div>
+                <div class="fee-divider"></div>
+                <div class="fee-row fee-total-row">
+                    <span>Total Payable</span>
+                    <span class="fee-total-amount" id="pay-total">₹149</span>
+                </div>
+            </div>
+
+            <!-- UPI QR -->
+            <div class="pay-section-title">Scan & Pay</div>
+            <div class="upi-qr-card">
+                <div class="upi-qr-wrap">
+                    <div class="upi-qr-inner" id="upi-qr-inner">
+                        <div class="upi-qr-loading">
+                            <div class="upi-spinner"></div>
+                            <span>Generating QR…</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="upi-id-row">
+                    <span class="upi-id-label">UPI ID</span>
+                    <span class="upi-id-val" id="upi-id-display">techsymposium2025@upi</span>
+                    <button class="upi-copy-btn" id="upi-copy-btn" title="Copy UPI ID">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <rect x="9" y="9" width="13" height="13" rx="2" />
+                            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- App Buttons -->
+            <div class="pay-section-title">Open UPI App</div>
+            <div class="upi-apps-grid">
+                <a class="upi-app-btn" id="btn-gpay" href="#" target="_blank" rel="noopener">
+                    <div class="upi-app-icon gpay-icon">G</div>
+                    <span>Google Pay</span>
+                </a>
+                <a class="upi-app-btn" id="btn-phonepe" href="#" target="_blank" rel="noopener">
+                    <div class="upi-app-icon phonepe-icon">₱</div>
+                    <span>PhonePe</span>
+                </a>
+                <a class="upi-app-btn" id="btn-paytm" href="#" target="_blank" rel="noopener">
+                    <div class="upi-app-icon paytm-icon">P</div>
+                    <span>Paytm</span>
+                </a>
+                <a class="upi-app-btn" id="btn-bhim" href="#" target="_blank" rel="noopener">
+                    <div class="upi-app-icon bhim-icon">B</div>
+                    <span>BHIM</span>
+                </a>
+            </div>
+
+            <!-- UTR Verification -->
+            <div class="utr-section">
+                <div class="pay-section-title">Confirm Payment</div>
+                <p class="utr-hint">After paying, enter the 12-digit UTR / Transaction ID from your UPI app.</p>
+                <div class="utr-input-wrap">
+                    <input type="text" id="utr-input" class="utr-input" placeholder="e.g. 426811234567" maxlength="22"
+                        inputmode="numeric">
+                    <span class="utr-status" id="utr-status"></span>
+                </div>
+                <div class="utr-error" id="utr-error">Please enter a valid UTR / Transaction ID (at least 10
+                    characters).</div>
+                <button class="cta-button" id="confirm-pay-btn" disabled>
+                    Confirm Payment <span class="arrow">→</span>
+                </button>
+                <p class="utr-note">⚠️ Your registration will be completed after payment verification.</p>
+            </div>
+        </main>
+
+        <!-- ── Success View ───────────────────────── -->
+        <main id="success-view" class="view hidden">
+
+            <!-- Celebration Banner -->
+            <div class="success-header">
+                <div class="success-icon-ring">
+                    <svg class="success-check" viewBox="0 0 52 52" fill="none">
+                        <circle class="success-check-circle" cx="26" cy="26" r="24" stroke="#10b981" stroke-width="3"
+                            fill="none" />
+                        <path class="success-check-mark" d="M14 26l9 9 16-16" stroke="#10b981" stroke-width="3.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <h2>Registration Successful!</h2>
+                <p>You're officially registered for the Annual Tech Symposium 2025. Your payment has been received and
+                    your spot is confirmed.</p>
+
+                <!-- Payment Confirmed Badge -->
+                <div class="payment-confirmed-badge">
+                    <span class="pcb-dot"></span>
+                    Payment Confirmed · Seat Reserved
+                </div>
+            </div>
+
+            <!-- Registration Summary Card -->
+            <div class="reg-summary-card">
+                <div class="reg-summary-row">
+                    <span class="reg-summary-label">👤 Name</span>
+                    <span class="reg-summary-val" id="summary-name">—</span>
+                </div>
+                <div class="reg-summary-divider"></div>
+                <div class="reg-summary-row">
+                    <span class="reg-summary-label">🏛️ College</span>
+                    <span class="reg-summary-val" id="summary-college">—</span>
+                </div>
+                <div class="reg-summary-divider"></div>
+                <div class="reg-summary-row">
+                    <span class="reg-summary-label">🎟 Ticket ID</span>
+                    <span class="reg-summary-val reg-summary-ticket" id="summary-ticket-id">—</span>
+                </div>
+                <div class="reg-summary-divider"></div>
+                <div class="reg-summary-row">
+                    <span class="reg-summary-label">💳 Payment</span>
+                    <span class="reg-summary-val reg-summary-paid">✓ Paid via UPI</span>
+                </div>
+            </div>
+
+            <!-- Digital Ticket -->
+            <div class="ticket-section-label">Your Digital Entry Pass</div>
+            <div class="ticket-card">
+                <div class="ticket-top"></div>
+                <div class="ticket-content">
+                    <div class="ticket-watermark">TIS</div>
+                    <div class="ticket-event">Tech Innovation Symposium 2025</div>
+                    <span class="ticket-type">Student Delegate Pass</span>
+
+                    <p class="ticket-name-display" id="ticket-name">—</p>
+                    <p class="ticket-college-display" id="ticket-college">—</p>
+
+                    <div class="ticket-divider">
+                        <div class="ticket-divider-notch"></div>
+                        <div class="ticket-divider-line"></div>
+                        <div class="ticket-divider-notch"></div>
+                    </div>
+
+                    <div class="ticket-info-row">
+                        <div class="ticket-info-item">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <rect x="3" y="4" width="18" height="18" rx="2" />
+                                <line x1="16" y1="2" x2="16" y2="6" />
+                                <line x1="8" y1="2" x2="8" y2="6" />
+                                <line x1="3" y1="10" x2="21" y2="10" />
+                            </svg>
+                            Mar 8, 2025
+                        </div>
+                        <div class="ticket-info-item">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                            9:00 AM
+                        </div>
+                        <div class="ticket-info-item">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                            Hall A
+                        </div>
+                    </div>
+
+                    <div class="qr-container">
+                        <div class="qr-wrapper">
+                            <img id="qr-code-img" src="qr_code.svg" alt="Entry Pass QR Code" class="qr-code">
+                            <div class="qr-scan-label">Scan to verify entry</div>
+                        </div>
+                    </div>
+
+                    <p class="ticket-id" id="ticket-id-el">ENTRY PASS · #TIS-0000</p>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-section">
+                <button class="secondary-button" onclick="window.print()">
+                    🖨️ Save / Print Pass
+                </button>
+                <button class="secondary-button" id="share-btn">
+                    🔗 Share with Friends
+                </button>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script>
+        // Guard: redirect to verify if no college verified
+        const verifiedCollege = sessionStorage.getItem('verifiedCollege');
+        if (!verifiedCollege) {
+            window.location.replace('/verify');
+        } else {
+            document.getElementById('vb-college-name').textContent = verifiedCollege;
+        }
+         </script>
+    <script>
+  const supabaseUrl = "https://cndahbhrfnmkrpvguvin.supabase.co"
+  const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNuZGFoYmhyZm5ta3Jwdmd1dmluIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI2MjczNTUsImV4cCI6MjA4ODIwMzM1NX0.UCkDFzUy2RlL_IL1r54khOi7I7Y6JodD5ar6sT6X8c0"
+
+  const supabase = window.supabase.createClient(supabaseUrl, supabaseKey)
+
+  console.log("Supabase Connected 🚀")
+   
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
